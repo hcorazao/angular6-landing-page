@@ -1,34 +1,42 @@
 :host {
 	float: left;
 	height: 50%;
-	width: 100%;
+	width: auto;
 	background-color: #f2f2f2;
 	padding: 30px 0px 30px 0px;
 }
+
 .footer-section-container {
 	margin-left: 15%;
 	margin-right: 15%;
+
 	.footer-section {
 		margin: 0px 10px 0px 10px;
+
 		h1 {
 			font-size: 24px;
 			margin-bottom: 5px;
 		}
+
 		p {
 			font-size: 16px;
 			text-align: justify;
 		}
+
 		.rectangle-container {
 			width: 100%;
+
 			.rectangle {
 				float: left;
 				margin: 0px 5px 0px 5px;
 				height: 40px;
 				width: 40px;
 				background-color: grey;
+
 				&.first {
 					margin-left: 0px;
 				}
+
 			}
 		}
 	}
