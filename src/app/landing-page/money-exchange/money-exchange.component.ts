@@ -1,6 +1,6 @@
 // Angular
 import { Component, OnInit, Input } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 // Modules
 
@@ -18,7 +18,7 @@ export class MoneyExchangeComponent implements OnInit {
   moneyExchangeForm: FormGroup;
 
   constructor(
-    private formBuilder: FormBuilder, 
+    private formBuilder: FormBuilder,
     private landingPageService: LandingPageService
   ) { }
 
@@ -36,16 +36,16 @@ export class MoneyExchangeComponent implements OnInit {
       ]]
     };
     this.moneyExchangeForm = this.formBuilder.group(controls);
-    
+
   }
 
   calculateCurrencyExchange(event) {
     event.preventDefault();
-    console.log("calculate");
-    console.log("dollarCurrencyInput", this.moneyExchangeForm.value.dollarCurrencyInput);
-    console.log("euroCurrencyInput", this.moneyExchangeForm.value.euroCurrencyInput);
+    console.log('calculate');
+    console.log('dollarCurrencyInput', this.moneyExchangeForm.value.dollarCurrencyInput);
+    console.log('euroCurrencyInput', this.moneyExchangeForm.value.euroCurrencyInput);
     this.landingPageService.getCurrency().subscribe(response => {
-      const euroConversion = this.moneyExchangeForm.value.dollarCurrencyInput/response.rates.EUR;
+      const euroConversion = this.moneyExchangeForm.value.dollarCurrencyInput / response.rates.EUR;
       this.moneyExchangeForm.controls['euroCurrencyInput'].setValue(euroConversion);
     });
   }

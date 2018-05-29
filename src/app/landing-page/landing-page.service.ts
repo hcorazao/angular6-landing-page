@@ -11,7 +11,7 @@ export class LandingPageService {
   constructor(private http: HttpClient) { }
 
   getCurrency() {
-    let headers: HttpHeaders = new HttpHeaders();
+    const headers: HttpHeaders = new HttpHeaders();
     return this.http.get<any>('http://api.fixer.io/latest?base=USD&symbols=EUR', { headers: headers });
   }
 
