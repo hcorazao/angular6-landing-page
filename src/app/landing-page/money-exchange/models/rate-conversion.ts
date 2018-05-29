@@ -3,6 +3,6 @@ export interface IRateConversion {
   base: string;
   date: string;
   rates: {
-  	EUR: number;
+    EUR: number;
   };
 }
