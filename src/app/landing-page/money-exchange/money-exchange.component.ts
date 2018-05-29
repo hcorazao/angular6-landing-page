@@ -6,7 +6,6 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import createNumberMask from 'text-mask-addons/dist/createNumberMask';
 
 // Models
-import { IRateConversion } from './models/rate-conversion';
 import { ICurrencyMask } from './models/currency-mask';
 
 // Services
@@ -51,9 +50,8 @@ export class MoneyExchangeComponent implements OnInit {
     event.preventDefault();
     if (!!this.moneyExchangeForm.value.dollarCurrencyInput) {
       this.landingPageService.getCurrency().subscribe(response => {
-        const currencyTransformation: IRateConversion = response;
         const dollarInputValue = this.convertToNumber(this.moneyExchangeForm.value.dollarCurrencyInput);
-        const euroConversion = dollarInputValue*currencyTransformation.rates.EUR;
+        const euroConversion = dollarInputValue*response.rates.EUR;
         this.moneyExchangeForm.controls['euroCurrencyInput'].setValue(euroConversion);
       });
     }
