@@ -4,11 +4,13 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 // Modules
-import { TextMaskModule } from 'angular2-text-mask';
 import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './shared/shared.module';
+import { MatFormFieldModule, MatInputModule, MatButtonModule } from '@angular/material';
+import { TextMaskModule } from 'angular2-text-mask';
 
 // Components
 import { AppComponent } from './app.component';
@@ -37,6 +39,10 @@ import { DividerComponent } from './landing-page/divider/divider.component';
     ReactiveFormsModule,
     SharedModule,
     TextMaskModule,
+    NoopAnimationsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
     AppRoutingModule
   ],
   providers: [],

@@ -9,11 +9,14 @@
 
 .input-container {
   margin-bottom: 30px;
-  input {
-    margin: 10px 0px 10px 0px;
+  mat-form-field {
     margin-left: 50%;
     transform: translateX(-50%);
+    input {
+      margin: 10px 0px 10px 0px;
+    }
   }
+    
 }
 
 .button-container {
@@ -21,6 +24,7 @@
   button {
     margin-left:50%;
     transform: translateX(-50%);
+    border: 1px solid grey;
   }
 }
 
@@ -30,9 +34,11 @@
   }
   .input-container {
     margin-bottom: 30px;
-    input {
-      margin-left: 50%;
-      transform: translateX(-50%);
+    mat-form-field {
+      input {
+        margin-left: 50%;
+        transform: translateX(-50%);
+      }
     }
   }
 }

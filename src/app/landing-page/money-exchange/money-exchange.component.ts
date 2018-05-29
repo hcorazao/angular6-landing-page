@@ -18,6 +18,19 @@ import { LandingPageService } from '../landing-page.service';
 export class MoneyExchangeComponent implements OnInit {
   moneyExchangeForm: FormGroup;
   price = 0;
+  private currencyMask = createNumberMask({
+    prefix: '',
+    suffix: '',
+    includeThousandsSeparator: true,
+    thousandsSeparatorSymbol: ',',
+    allowDecimal: true,
+    decimalSymbol: '.',
+    decimalLimit: 2,
+    integerLimit: null,
+    requireDecimal: false,
+    allowNegative: false,
+    allowLeadingZeroes: false
+  });
 
   constructor(
     private formBuilder: FormBuilder,
@@ -48,19 +61,5 @@ export class MoneyExchangeComponent implements OnInit {
       this.moneyExchangeForm.controls['euroCurrencyInput'].setValue(euroConversion);
     });
   }
-
-  private currencyMask = createNumberMask({
-    prefix: '',
-    suffix: '',
-    includeThousandsSeparator: true,
-    thousandsSeparatorSymbol: ',',
-    allowDecimal: true,
-    decimalSymbol: '.',
-    decimalLimit: 2,
-    integerLimit: null,
-    requireDecimal: false,
-    allowNegative: false,
-    allowLeadingZeroes: false
-  });
 
 }
