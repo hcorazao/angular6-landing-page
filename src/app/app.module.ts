@@ -8,7 +8,6 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 // Modules
 import { AppRoutingModule } from './app-routing.module';
-import { SharedModule } from './shared/shared.module';
 import { MatFormFieldModule, MatInputModule, MatButtonModule } from '@angular/material';
 import { TextMaskModule } from 'angular2-text-mask';
 
@@ -18,7 +17,6 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 import { CoverComponent } from './landing-page/cover/cover.component';
 import { MoneyExchangeComponent } from './landing-page/money-exchange/money-exchange.component';
 import { FooterComponent } from './landing-page/footer/footer.component';
-import { LoadingComponent } from './shared/loading/loading.component';
 import { DividerComponent } from './landing-page/divider/divider.component';
 
 @NgModule({
@@ -28,7 +26,6 @@ import { DividerComponent } from './landing-page/divider/divider.component';
     CoverComponent,
     MoneyExchangeComponent,
     FooterComponent,
-    LoadingComponent,
     DividerComponent
   ],
   imports: [
@@ -37,7 +34,6 @@ import { DividerComponent } from './landing-page/divider/divider.component';
     FlexLayoutModule,
     FormsModule,
     ReactiveFormsModule,
-    SharedModule,
     TextMaskModule,
     NoopAnimationsModule,
     MatFormFieldModule,
