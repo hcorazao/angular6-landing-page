@@ -47,6 +47,30 @@ export class MoneyExchangeComponent implements OnInit {
 
   }
 
+  calculateCurrencyExchange(event) {
+    event.preventDefault();
+    if (!!this.moneyExchangeForm.value.dollarCurrencyInput) {
+      this.landingPageService.getCurrency().subscribe(response => {
+        const dollarInputValue = this.convertToNumber(this.moneyExchangeForm.value.dollarCurrencyInput);
+        const euroConversion = dollarInputValue / response.rates.EUR;
+        this.moneyExchangeForm.controls['euroCurrencyInput'].setValue(euroConversion);
+      });
+    }
+  }
+
+  convertToNumber(textToTransform: string) {
+    let convertedNumber: number;
+    const indexOfComma: number = textToTransform.indexOf(',');
+    if (indexOfComma !== -1) {
+      const hundreds = textToTransform.slice(indexOfComma + 1, indexOfComma + 5);
+      const thousands = textToTransform.slice(1, indexOfComma);
+      convertedNumber = Number(thousands + hundreds);
+    } else {
+      convertedNumber = Number(textToTransform.substr(1, 4));
+    }
+    return convertedNumber;
+  }
+
   setCurrencyConfiguration() {
     this.currencyMaskDollar = createNumberMask({
       prefix: '$',
@@ -74,30 +98,6 @@ export class MoneyExchangeComponent implements OnInit {
       allowNegative: false,
       allowLeadingZeroes: false
     });
-  }
-
-  calculateCurrencyExchange(event) {
-    event.preventDefault();
-    if (!!this.moneyExchangeForm.value.dollarCurrencyInput) {
-      this.landingPageService.getCurrency().subscribe(response => {
-        const dollarInputValue = this.convertToNumber(this.moneyExchangeForm.value.dollarCurrencyInput);
-        const euroConversion = dollarInputValue / response.rates.EUR;
-        this.moneyExchangeForm.controls['euroCurrencyInput'].setValue(euroConversion);
-      });
-    }
-  }
-
-  convertToNumber(textToTransform: string) {
-    let convertedNumber: number;
-    const indexOfComma: number = textToTransform.indexOf(',');
-    if (indexOfComma !== -1) {
-      const hundreds = textToTransform.slice(indexOfComma + 1, indexOfComma + 5);
-      const thousands = textToTransform.slice(1, indexOfComma);
-      convertedNumber = Number(thousands + hundreds);
-    } else {
-      convertedNumber = Number(textToTransform.substr(1, 4));
-    }
-    return convertedNumber;
   }
 
 }
