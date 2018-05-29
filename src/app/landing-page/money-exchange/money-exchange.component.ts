@@ -57,9 +57,24 @@ export class MoneyExchangeComponent implements OnInit {
   calculateCurrencyExchange(event) {
     event.preventDefault();
     this.landingPageService.getCurrency().subscribe(response => {
-      const euroConversion = this.moneyExchangeForm.value.dollarCurrencyInput / response.rates.EUR;
+      const dollarInputValue = this.convertToNumber(this.moneyExchangeForm.value.dollarCurrencyInput);
+      const euroConversion = dollarInputValue/response.rates.EUR;
       this.moneyExchangeForm.controls['euroCurrencyInput'].setValue(euroConversion);
     });
+  }
+
+  convertToNumber(textToTransform: string) {
+    // TODO pass this function to Util
+    let convertedNumber: number;
+    const indexOfComma: number = textToTransform.indexOf(',');
+    if (indexOfComma !== -1) {
+      const hundreds = textToTransform.slice(indexOfComma + 1, indexOfComma + 5);
+      const thousands = textToTransform.slice(0, indexOfComma);
+      convertedNumber = Number(thousands + hundreds);
+    } else {
+      convertedNumber = Number(textToTransform);
+    }
+    return convertedNumber;
   }
 
 }
