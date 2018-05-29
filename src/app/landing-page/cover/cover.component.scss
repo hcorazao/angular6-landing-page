@@ -36,3 +36,14 @@
 		
 	}
 }
+
+@media (max-width: 575px) {
+	.container {
+		.buttons-container {
+			.button {
+				margin: 10px 0px 10px 0px;
+			}
+		}
+	}
+	
+}

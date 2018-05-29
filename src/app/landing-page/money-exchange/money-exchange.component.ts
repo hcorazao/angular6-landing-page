@@ -23,6 +23,7 @@ export class MoneyExchangeComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    // check https://stackoverflow.com/questions/47265186/angular2-show-two-decimals-in-input
     this.buildForm();
   }
 
@@ -32,7 +33,7 @@ export class MoneyExchangeComponent implements OnInit {
         Validators.required
       ]],
       euroCurrencyInput: ['', [
-
+        Validators.required
       ]]
     };
     this.moneyExchangeForm = this.formBuilder.group(controls);
@@ -41,9 +42,6 @@ export class MoneyExchangeComponent implements OnInit {
 
   calculateCurrencyExchange(event) {
     event.preventDefault();
-    console.log('calculate');
-    console.log('dollarCurrencyInput', this.moneyExchangeForm.value.dollarCurrencyInput);
-    console.log('euroCurrencyInput', this.moneyExchangeForm.value.euroCurrencyInput);
     this.landingPageService.getCurrency().subscribe(response => {
       const euroConversion = this.moneyExchangeForm.value.dollarCurrencyInput / response.rates.EUR;
       this.moneyExchangeForm.controls['euroCurrencyInput'].setValue(euroConversion);
