@@ -3,6 +3,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 // Modules
+import createNumberMask from 'text-mask-addons/dist/createNumberMask';
 
 // Models
 
@@ -16,6 +17,7 @@ import { LandingPageService } from '../landing-page.service';
 })
 export class MoneyExchangeComponent implements OnInit {
   moneyExchangeForm: FormGroup;
+  price = 0;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -23,7 +25,6 @@ export class MoneyExchangeComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    // check https://stackoverflow.com/questions/47265186/angular2-show-two-decimals-in-input
     this.buildForm();
   }
 
@@ -47,5 +48,19 @@ export class MoneyExchangeComponent implements OnInit {
       this.moneyExchangeForm.controls['euroCurrencyInput'].setValue(euroConversion);
     });
   }
+
+  private currencyMask = createNumberMask({
+    prefix: '',
+    suffix: '',
+    includeThousandsSeparator: true,
+    thousandsSeparatorSymbol: ',',
+    allowDecimal: true,
+    decimalSymbol: '.',
+    decimalLimit: 2,
+    integerLimit: null,
+    requireDecimal: false,
+    allowNegative: false,
+    allowLeadingZeroes: false
+  });
 
 }

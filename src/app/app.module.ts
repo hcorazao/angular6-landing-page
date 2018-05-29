@@ -6,6 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 // Modules
+import { TextMaskModule } from 'angular2-text-mask';
 import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './shared/shared.module';
 
@@ -35,6 +36,7 @@ import { DividerComponent } from './landing-page/divider/divider.component';
     FormsModule,
     ReactiveFormsModule,
     SharedModule,
+    TextMaskModule,
     AppRoutingModule
   ],
   providers: [],
