@@ -59,14 +59,8 @@ export class MoneyExchangeComponent implements OnInit {
 
   convertToNumber(textToTransform: string) {
     let convertedNumber: number;
-    const indexOfComma: number = textToTransform.indexOf(',');
-    if (indexOfComma !== -1) {
-      const hundreds = textToTransform.slice(indexOfComma + 1, indexOfComma + 5);
-      const thousands = textToTransform.slice(1, indexOfComma);
-      convertedNumber = Number(thousands + hundreds);
-    } else {
-      convertedNumber = Number(textToTransform.substr(1, 4));
-    }
+    textToTransform = textToTransform.replace(new RegExp(',', 'g'), '').replace('$', '');
+    convertedNumber = Number(textToTransform);
     return convertedNumber;
   }
 
@@ -78,9 +72,9 @@ export class MoneyExchangeComponent implements OnInit {
       thousandsSeparatorSymbol: ',',
       allowDecimal: true,
       decimalSymbol: '.',
-      decimalLimit: 2,
+      decimalLimit: 4,
       integerLimit: null,
-      requireDecimal: false,
+      requireDecimal: true,
       allowNegative: false,
       allowLeadingZeroes: false
     });
@@ -91,9 +85,9 @@ export class MoneyExchangeComponent implements OnInit {
       thousandsSeparatorSymbol: ',',
       allowDecimal: true,
       decimalSymbol: '.',
-      decimalLimit: 2,
+      decimalLimit: 4,
       integerLimit: null,
-      requireDecimal: false,
+      requireDecimal: true,
       allowNegative: false,
       allowLeadingZeroes: false
     });
