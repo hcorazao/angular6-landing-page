@@ -40,3 +40,14 @@
 		}
 	}
 }
+
+@media (max-width: 575px) {
+	.footer-section-container {
+		margin-left: 15%;
+		margin-right: 15%;
+
+		.footer-section {
+			margin: 0px 10px 0px 10px;
+		}
+	}
+}

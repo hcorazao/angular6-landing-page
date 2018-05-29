@@ -1,9 +1,9 @@
 <form [formGroup]="moneyExchangeForm" (ngSubmit)="calculateCurrencyExchange($event)">
-  <div class="input-container" fxLayout="row" fxLayoutAlign="center center" fxLayoutWrap="wrap">
-    <div fxFlex="50">
+  <div class="input-container" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center center">
+    <div fxFlex="50" fxFlex.xs="100">
       <input type="number" formControlName="dollarCurrencyInput">
     </div>
-    <div fxFlex="50">
+    <div fxFlex="50" fxFlex.xs="100">
       <input type="number" formControlName="euroCurrencyInput" readonly="true">
     </div>
   </div>
