@@ -6,6 +6,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import createNumberMask from 'text-mask-addons/dist/createNumberMask';
 
 // Models
+import { IRateConversion } from './models/rate-conversion';
 
 // Services
 import { LandingPageService } from '../landing-page.service';
@@ -64,7 +65,7 @@ export class MoneyExchangeComponent implements OnInit {
   }
 
   convertToNumber(textToTransform: string) {
-    // TODO pass this function to Util
+    // TODO pass this function to Util in shared module
     let convertedNumber: number;
     const indexOfComma: number = textToTransform.indexOf(',');
     if (indexOfComma !== -1) {
