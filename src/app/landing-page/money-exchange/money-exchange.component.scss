@@ -12,6 +12,7 @@
   mat-form-field {
     margin-left: 50%;
     transform: translateX(-50%);
+    width: 40vw;
     input {
       margin: 10px 0px 10px 0px;
     }
@@ -24,7 +25,6 @@
   button {
     margin-left:50%;
     transform: translateX(-50%);
-    border: 1px solid grey;
   }
 }
 
@@ -35,6 +35,7 @@
   .input-container {
     margin-bottom: 30px;
     mat-form-field {
+      width: 90vw;
       input {
         margin-left: 50%;
         transform: translateX(-50%);

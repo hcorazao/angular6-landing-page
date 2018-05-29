@@ -2,16 +2,16 @@
   <div class="input-container" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center center">
     <div fxFlex="50" fxFlex.xs="100">
       <mat-form-field>
-        <input matInput type="text" maxlength="6" [textMask]="{mask: currencyMask}" formControlName="dollarCurrencyInput">
+        <input matInput type="text" maxlength="6" placeholder="USD" [textMask]="{mask: currencyMask}" formControlName="dollarCurrencyInput">
       </mat-form-field>
     </div>
     <div fxFlex="50" fxFlex.xs="100">
       <mat-form-field>
-        <input matInput type="text" maxlength="6" [textMask]="{mask: currencyMask}" formControlName="euroCurrencyInput" readonly="true">
+        <input matInput type="text" maxlength="6" placeholder="EU" [textMask]="{mask: currencyMask}" formControlName="euroCurrencyInput" readonly="true">
       </mat-form-field>
     </div>
   </div>
   <div class="button-container">
-    <button mat-button color="primary" (click)="calculateCurrencyExchange($event)">Calculate</button>
+    <button mat-raised-button color="primary" (click)="calculateCurrencyExchange($event)">Calculate</button>
   </div>
 </form>
