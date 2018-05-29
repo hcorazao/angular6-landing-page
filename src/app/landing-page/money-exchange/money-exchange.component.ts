@@ -7,6 +7,7 @@ import createNumberMask from 'text-mask-addons/dist/createNumberMask';
 
 // Models
 import { IRateConversion } from './models/rate-conversion';
+import { ICurrencyMask } from './models/currency-mask';
 
 // Services
 import { LandingPageService } from '../landing-page.service';
@@ -19,19 +20,9 @@ import { LandingPageService } from '../landing-page.service';
 export class MoneyExchangeComponent implements OnInit {
   moneyExchangeForm: FormGroup;
   price = 0;
-  private currencyMask = createNumberMask({
-    prefix: '',
-    suffix: '',
-    includeThousandsSeparator: true,
-    thousandsSeparatorSymbol: ',',
-    allowDecimal: true,
-    decimalSymbol: '.',
-    decimalLimit: 2,
-    integerLimit: null,
-    requireDecimal: false,
-    allowNegative: false,
-    allowLeadingZeroes: false
-  });
+  currencyMaskDollar: ICurrencyMask;
+  currencyMaskEuro: ICurrencyMask;
+
 
   constructor(
     private formBuilder: FormBuilder,
@@ -40,6 +31,7 @@ export class MoneyExchangeComponent implements OnInit {
 
   ngOnInit() {
     this.buildForm();
+    this.setCurrencyConfiguration();
   }
 
   buildForm() {
@@ -53,6 +45,35 @@ export class MoneyExchangeComponent implements OnInit {
     };
     this.moneyExchangeForm = this.formBuilder.group(controls);
 
+  }
+
+  setCurrencyConfiguration() {
+    this.currencyMaskDollar = createNumberMask({
+      prefix: '$',
+      suffix: '',
+      includeThousandsSeparator: true,
+      thousandsSeparatorSymbol: ',',
+      allowDecimal: true,
+      decimalSymbol: '.',
+      decimalLimit: 2,
+      integerLimit: null,
+      requireDecimal: false,
+      allowNegative: false,
+      allowLeadingZeroes: false
+    });
+    this.currencyMaskEuro = createNumberMask({
+      prefix: '€',
+      suffix: '',
+      includeThousandsSeparator: true,
+      thousandsSeparatorSymbol: ',',
+      allowDecimal: true,
+      decimalSymbol: '.',
+      decimalLimit: 2,
+      integerLimit: null,
+      requireDecimal: false,
+      allowNegative: false,
+      allowLeadingZeroes: false
+    });
   }
 
   calculateCurrencyExchange(event) {
@@ -71,10 +92,10 @@ export class MoneyExchangeComponent implements OnInit {
     const indexOfComma: number = textToTransform.indexOf(',');
     if (indexOfComma !== -1) {
       const hundreds = textToTransform.slice(indexOfComma + 1, indexOfComma + 5);
-      const thousands = textToTransform.slice(0, indexOfComma);
+      const thousands = textToTransform.slice(1, indexOfComma);
       convertedNumber = Number(thousands + hundreds);
     } else {
-      convertedNumber = Number(textToTransform);
+      convertedNumber = Number(textToTransform.substr(1, 4));
     }
     return convertedNumber;
   }

@@ -2,12 +2,28 @@
   <div class="input-container" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center center">
     <div fxFlex="50" fxFlex.xs="100">
       <mat-form-field>
-        <input matInput type="text" autocomplete="off" maxlength="5" placeholder="USD" [textMask]="{mask: currencyMask}" formControlName="dollarCurrencyInput">
+        <input
+          matInput
+          type="text"
+          autocomplete="off"
+          maxlength="5"
+          placeholder="USD"
+          [textMask]="{mask: currencyMaskDollar}"
+          formControlName="dollarCurrencyInput"
+        >
       </mat-form-field>
     </div>
     <div fxFlex="50" fxFlex.xs="100">
       <mat-form-field>
-        <input matInput type="text" autocomplete="off" maxlength="5" placeholder="EU" [textMask]="{mask: currencyMask}" formControlName="euroCurrencyInput" readonly="true">
+        <input
+          matInput
+          type="text"
+          autocomplete="off"
+          maxlength="5"
+          placeholder="EU"
+          [textMask]="{mask: currencyMaskEuro}"
+          formControlName="euroCurrencyInput"
+          readonly="true">
       </mat-form-field>
     </div>
   </div>
