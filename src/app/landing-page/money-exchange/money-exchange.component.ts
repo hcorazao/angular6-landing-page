@@ -52,7 +52,7 @@ export class MoneyExchangeComponent implements OnInit {
     if (!!this.moneyExchangeForm.value.dollarCurrencyInput) {
       this.landingPageService.getCurrency().subscribe(response => {
         const dollarInputValue = this.convertToNumber(this.moneyExchangeForm.value.dollarCurrencyInput);
-        const euroConversion = dollarInputValue / response.rates.EUR;
+        const euroConversion = dollarInputValue*response.rates.EUR;
         this.moneyExchangeForm.controls['euroCurrencyInput'].setValue(euroConversion);
       });
     }
