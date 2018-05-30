@@ -18,7 +18,7 @@ import { LandingPageService } from '../landing-page.service';
 })
 export class MoneyExchangeComponent implements OnInit {
   moneyExchangeForm: FormGroup;
-  loading: boolean = false;
+  loading = false;
   currencyExchange: number;
   currencyMaskDollar: ICurrencyMask;
   currencyMaskEuro: ICurrencyMask;
@@ -27,7 +27,7 @@ export class MoneyExchangeComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private landingPageService: LandingPageService
-  ) { 
+  ) {
     this.buildForm();
   }
 
@@ -61,7 +61,7 @@ export class MoneyExchangeComponent implements OnInit {
     this.landingPageService.getCurrency().subscribe(response => {
       this.loading = false;
       this.currencyExchange = response.rates.EUR;
-      setTimeout(()=>this.getCurrencyExchange(), 600000); // Currency updated every 10 minutes
+      setTimeout(() => this.getCurrencyExchange(), 600000); // Currency updated every 10 minutes
     });
   }
 
