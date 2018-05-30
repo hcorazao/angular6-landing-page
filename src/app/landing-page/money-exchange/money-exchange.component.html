@@ -10,7 +10,6 @@
           [textMask]="{mask: currencyMaskDollar}"
           formControlName="dollarCurrencyInput"
         >
-        <app-loading-icon *ngIf="loading"></app-loading-icon>
       </mat-form-field>
     </div>
     <div fxFlex="50" fxFlex.xs="100">
@@ -28,5 +27,8 @@
   </div>
   <div class="button-container">
     <button mat-raised-button [disabled]="!currencyExchange || loading" color="primary" (click)="calculateCurrencyExchange($event)">Calculate</button>
+  </div>
+  <div class="loading-container" *ngIf="loading">
+    <app-loading-icon></app-loading-icon>Loading currency...
   </div>
 </form>

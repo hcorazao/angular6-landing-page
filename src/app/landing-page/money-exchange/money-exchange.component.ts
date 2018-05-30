@@ -61,7 +61,7 @@ export class MoneyExchangeComponent implements OnInit {
     this.landingPageService.getCurrency().subscribe(response => {
       this.loading = false;
       this.currencyExchange = response.rates.EUR;
-      setTimeout(()=>this.getCurrencyExchange(), 5000);
+      setTimeout(()=>this.getCurrencyExchange(), 600000); // Currency updated every 10 minutes
     });
   }
 
