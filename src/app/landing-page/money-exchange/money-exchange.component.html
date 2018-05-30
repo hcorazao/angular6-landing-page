@@ -27,6 +27,6 @@
     </div>
   </div>
   <div class="button-container">
-    <button mat-raised-button color="primary" (click)="calculateCurrencyExchange($event)">Calculate</button>
+    <button mat-raised-button [disabled]="!currencyExchange || loading" color="primary" (click)="calculateCurrencyExchange($event)">Calculate</button>
   </div>
 </form>

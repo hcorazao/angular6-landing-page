@@ -18,8 +18,8 @@ import { LandingPageService } from '../landing-page.service';
 })
 export class MoneyExchangeComponent implements OnInit {
   moneyExchangeForm: FormGroup;
-  price = 0;
   loading: boolean = false;
+  currencyExchange: number;
   currencyMaskDollar: ICurrencyMask;
   currencyMaskEuro: ICurrencyMask;
 
@@ -27,11 +27,13 @@ export class MoneyExchangeComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private landingPageService: LandingPageService
-  ) { }
+  ) { 
+    this.buildForm();
+  }
 
   ngOnInit() {
-    this.buildForm();
     this.setCurrencyConfiguration();
+    this.getCurrencyExchange();
   }
 
   buildForm() {
@@ -39,9 +41,7 @@ export class MoneyExchangeComponent implements OnInit {
       dollarCurrencyInput: ['', [
         Validators.required
       ]],
-      euroCurrencyInput: ['', [
-        Validators.required
-      ]]
+      euroCurrencyInput: ['']
     };
     this.moneyExchangeForm = this.formBuilder.group(controls);
 
@@ -50,14 +50,19 @@ export class MoneyExchangeComponent implements OnInit {
   calculateCurrencyExchange(event) {
     event.preventDefault();
     if (!!this.moneyExchangeForm.value.dollarCurrencyInput) {
-      this.loading = true;
-      this.landingPageService.getCurrency().subscribe(response => {
-        this.loading = false;
-        const dollarInputValue = this.convertToNumber(this.moneyExchangeForm.value.dollarCurrencyInput);
-        const euroConversion = dollarInputValue * response.rates.EUR;
-        this.moneyExchangeForm.controls['euroCurrencyInput'].setValue(euroConversion);
-      });
+      const dollarInputValue = this.convertToNumber(this.moneyExchangeForm.value.dollarCurrencyInput);
+      const euroConversion = dollarInputValue * this.currencyExchange;
+      this.moneyExchangeForm.controls['euroCurrencyInput'].setValue(euroConversion);
     }
+  }
+
+  getCurrencyExchange() {
+    this.loading = true;
+    this.landingPageService.getCurrency().subscribe(response => {
+      this.loading = false;
+      this.currencyExchange = response.rates.EUR;
+      setTimeout(()=>this.getCurrencyExchange(), 5000);
+    });
   }
 
   convertToNumber(textToTransform: string) {
