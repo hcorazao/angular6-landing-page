@@ -19,6 +19,7 @@ import { LandingPageService } from '../landing-page.service';
 export class MoneyExchangeComponent implements OnInit {
   moneyExchangeForm: FormGroup;
   price = 0;
+  loading: boolean = false;
   currencyMaskDollar: ICurrencyMask;
   currencyMaskEuro: ICurrencyMask;
 
@@ -49,7 +50,9 @@ export class MoneyExchangeComponent implements OnInit {
   calculateCurrencyExchange(event) {
     event.preventDefault();
     if (!!this.moneyExchangeForm.value.dollarCurrencyInput) {
+      this.loading = true;
       this.landingPageService.getCurrency().subscribe(response => {
+        this.loading = false;
         const dollarInputValue = this.convertToNumber(this.moneyExchangeForm.value.dollarCurrencyInput);
         const euroConversion = dollarInputValue * response.rates.EUR;
         this.moneyExchangeForm.controls['euroCurrencyInput'].setValue(euroConversion);

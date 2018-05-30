@@ -18,6 +18,7 @@ import { CoverComponent } from './landing-page/cover/cover.component';
 import { MoneyExchangeComponent } from './landing-page/money-exchange/money-exchange.component';
 import { FooterComponent } from './landing-page/footer/footer.component';
 import { DividerComponent } from './landing-page/divider/divider.component';
+import { LoadingIconComponent } from './landing-page/loading-icon/loading-icon.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { DividerComponent } from './landing-page/divider/divider.component';
     CoverComponent,
     MoneyExchangeComponent,
     FooterComponent,
-    DividerComponent
+    DividerComponent,
+    LoadingIconComponent
   ],
   imports: [
     BrowserModule,

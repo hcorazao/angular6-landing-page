@@ -1,0 +1,16 @@
+:host {
+  position: absolute;
+  top: 15px;
+  right: 0;
+  svg {
+    animation: spin 2s linear infinite;
+    transform-origin: 50% 50% !important;
+  }
+}
+
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
